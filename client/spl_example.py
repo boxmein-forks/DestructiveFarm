@@ -14,5 +14,5 @@ print("I need to attack a team with host: {}".format(host))
 print("Here are some random flags for you:")
 
 for _ in range(3):
-    flag = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(31)) + '='
+    flag = "RABA_" + ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(32))
     print(flag, flush=True)

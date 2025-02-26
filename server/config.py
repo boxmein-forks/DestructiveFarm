@@ -3,28 +3,16 @@ CONFIG = {
 
     # The clients will run sploits on TEAMS and
     # fetch FLAG_FORMAT from sploits' stdout.
-    'TEAMS': {'Team #{}'.format(i): '10.0.0.{}'.format(i)
-              for i in range(1, 29 + 1)},
-    'FLAG_FORMAT': r'[A-Z0-9]{31}=',
+    'TEAMS': {'Team #{}'.format(i): '10.98.{}.1'.format(i)
+              for i in range(2, 5)},
+    'FLAG_FORMAT': r'RABA_[A-Za-z0-9+/]{32}',
 
     # This configures how and where to submit flags.
     # The protocol must be a module in protocols/ directory.
 
-    'SYSTEM_PROTOCOL': 'ructf_tcp',
-    'SYSTEM_HOST': '127.0.0.1',
-    'SYSTEM_PORT': 31337,
-
-    # 'SYSTEM_PROTOCOL': 'ructf_http',
-    # 'SYSTEM_URL': 'http://monitor.ructfe.org/flags',
-    # 'SYSTEM_TOKEN': 'your_secret_token',
-
-    # 'SYSTEM_PROTOCOL': 'volgactf',
-    # 'SYSTEM_HOST': '127.0.0.1',
-
-    # 'SYSTEM_PROTOCOL': 'forcad_tcp',
-    # 'SYSTEM_HOST': '127.0.0.1',
-    # 'SYSTEM_PORT': 31337,
-    # 'TEAM_TOKEN': 'your_secret_token',
+    'SYSTEM_PROTOCOL': 'rabactf',
+    'SYSTEM_HOST': '10.98.0.1',
+    'SYSTEM_PORT': 31111,
 
     # The server will submit not more than SUBMIT_FLAG_LIMIT flags
     # every SUBMIT_PERIOD seconds. Flags received more than

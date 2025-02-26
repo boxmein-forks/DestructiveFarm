@@ -44,13 +44,8 @@ def submit_flags(flags, config):
                                     READ_TIMEOUT)
 
     greeting = recvall(sock)
-    if b'Welcome' not in greeting:
+    if b'Flag Submission' not in greeting:
         raise Exception('Checksystem does not greet us: {}'.format(greeting))
-
-    sock.sendall(config['TEAM_TOKEN'].encode() + b'\n')
-    invite = recvall(sock)
-    if b'enter your flags' not in invite:
-        raise Exception('Team token seems to be invalid: {}'.format(invite))
 
     unknown_responses = set()
     for item in flags:
@@ -58,9 +53,10 @@ def submit_flags(flags, config):
         response = recvall(sock).decode().strip()
         if response:
             response = response.splitlines()[0]
-        response = response.replace('[{}] '.format(item.flag), '')
+        response = response.replace('{} '.format(item.flag), '')
 
         response_lower = response.lower()
+
         for status, substrings in RESPONSES.items():
             if any(s in response_lower for s in substrings):
                 found_status = status
